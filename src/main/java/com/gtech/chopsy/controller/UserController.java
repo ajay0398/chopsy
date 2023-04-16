@@ -3,10 +3,9 @@ package com.gtech.chopsy.controller;
 
 import com.gtech.chopsy.model.User;
 import com.gtech.chopsy.repository.UserRepository;
+import com.gtech.chopsy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,12 +13,19 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-    UserRepository repository;
+    UserService service;
+
 
     @GetMapping()
     public List<User> getAllUser(){
         //return UserRoster.getAllUser();
-        return repository.findAll();
+        return service.getAllUser();
+
+    }
+
+    @PostMapping()
+    public User save(@RequestBody User user){
+        return service.save(user);
     }
 
 

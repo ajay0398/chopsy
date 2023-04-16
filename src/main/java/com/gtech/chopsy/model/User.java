@@ -22,6 +22,8 @@ public class User {
     private String email;
     private String mobileNumber;
     private String password;
+    @Transient
+    private String displayName;
 
 
 }
