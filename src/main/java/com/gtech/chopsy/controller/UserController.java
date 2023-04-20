@@ -5,6 +5,8 @@ import com.gtech.chopsy.model.User;
 import com.gtech.chopsy.repository.UserRepository;
 import com.gtech.chopsy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,15 +19,15 @@ public class UserController {
 
 
     @GetMapping()
-    public List<User> getAllUser(){
-        //return UserRoster.getAllUser();
-        return service.getAllUser();
+    public ResponseEntity<?> getAllUser(){
+
+        return new ResponseEntity(service.getAllUser(), HttpStatus.OK);
 
     }
 
     @PostMapping()
-    public User save(@RequestBody User user){
-        return service.save(user);
+    public ResponseEntity<?> save(@RequestBody User user){
+        return new ResponseEntity<>(service.save(user), HttpStatus.CREATED) ;
     }
 
 
