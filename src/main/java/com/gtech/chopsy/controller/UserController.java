@@ -20,7 +20,6 @@ public class UserController {
 
     @GetMapping()
     public ResponseEntity<?> getAllUser(){
-
         return new ResponseEntity(service.getAllUser(), HttpStatus.OK);
 
     }
